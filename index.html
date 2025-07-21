@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Terminos y Condiciones</title>
+    <title>Términos y Condiciones</title>
     <style>
         body { margin: 0; padding: 20px; background: #f5f5f5; }
         embed { 
             width: 100%; 
-            height: 100vh;
+            height: 90vh;
             border: 1px solid #ddd;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 400px;
         }
     </style>
 </head>
 <body>
-    <embed src="tyc.pdf" type="application/pdf">
+    <h1>Aviso de Privacidad</h1>
+    <select id="pdfSelector" onchange="loadPDF()">
+        <option value="Terminos y condiciones.pdf">Términos y Condiciones</option>
+        <option value="Aviso de Privacidad.pdf">Aviso de Privacidad</option>
+    </select>
+    <embed id="pdfViewer" src="tyc.pdf" type="application/pdf">
+
+    <script>
+        function loadPDF() {
+            const selector = document.getElementById("pdfSelector");
+            const viewer = document.getElementById("pdfViewer");
+            viewer.src = selector.value;
+        }
+    </script>
 </body>
 </html>
